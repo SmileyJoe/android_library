@@ -10,6 +10,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class DataActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
         mTextData = (TextView) findViewById(R.id.text_data);
+        mTextData.setMovementMethod(new ScrollingMovementMethod());
         populate();
     }
 
