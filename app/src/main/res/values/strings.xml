@@ -2,6 +2,7 @@
     <string name="app_name">Library</string>
 
     <string name="activity_name">Data</string>
+    <string name="activity_title_debug">Debug</string>
 
     <string name="cat_title_name">Name</string>
     <string name="cat_title_email">Email</string>
@@ -15,7 +16,13 @@
 
     <string name="navigation_title_home">Home</string>
     <string name="navigation_title_data">Data</string>
+    <string name="navigation_title_debug">Debug</string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <string name="text_debug_instructions">Please check logcat.</string>
+    <string name="text_debug_enabled">Debugging is enabled.</string>
+    <string name="text_debug_not_enabled">Debugging is not enabled.</string>
+    <string name="text_debug_default_tag">Debugger is using the default tag %1$s.</string>
 </resources>

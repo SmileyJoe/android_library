@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 
 import com.smileyjoedev.library.MainActivity;
 import com.smileyjoedev.library.R;
+import com.smileyjoedev.library.activity.DebugActivity;
 import com.smileyjoedev.library.activity.DataActivity;
 
 /**
@@ -64,6 +65,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     startActivity(navMenuIntent(MainActivity.getIntent(getBaseContext())));
+                    return true;
+                case R.id.navigation_debug:
+                    startActivity(navMenuIntent(DebugActivity.getIntent(getBaseContext())));
                     return true;
                 case R.id.navigation_data:
                     startActivity(navMenuIntent(DataActivity.getIntent(getBaseContext())));
