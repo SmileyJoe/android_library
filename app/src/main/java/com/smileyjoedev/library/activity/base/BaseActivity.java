@@ -16,8 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.smileyjoedev.debug.Debug;
 import com.smileyjoedev.library.MainActivity;
 import com.smileyjoedev.library.R;
+import com.smileyjoedev.library.activity.DebugActivity;
 
 /**
  * Created by cody on 2016/03/27.
@@ -63,6 +65,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     startActivity(navMenuIntent(MainActivity.getIntent(getBaseContext())));
+                    return true;
+                case R.id.navigation_debug:
+                    startActivity(navMenuIntent(DebugActivity.getIntent(getBaseContext())));
                     return true;
                 default:
                     return false;

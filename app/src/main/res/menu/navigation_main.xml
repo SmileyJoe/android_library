@@ -4,4 +4,9 @@
         android:id="@+id/navigation_home"
         android:checked="false"
         android:title="@string/navigation_title_home" />
+
+    <item
+        android:id="@+id/navigation_debug"
+        android:checked="false"
+        android:title="@string/navigation_title_debug" />
 </menu>
