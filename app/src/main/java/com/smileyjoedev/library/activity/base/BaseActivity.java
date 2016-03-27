@@ -74,7 +74,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private Intent navMenuIntent(Intent intent){
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return intent;
     }
 
