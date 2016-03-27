@@ -104,7 +104,7 @@ public class Data extends Random{
     }
 
     public String nextParagraph(){
-        return nextParagraph(1);
+        return nextParagraph(nextInt(5));
     }
 
     public String nextParagraph(int numberParagraphs){

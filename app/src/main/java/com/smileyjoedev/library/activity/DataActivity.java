@@ -9,6 +9,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.smileyjoedev.data.Data;
@@ -27,12 +29,30 @@ public class DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data);
         mSpanBuilder = new SpannableStringBuilder();
         mTextData = (TextView) findViewById(R.id.text_data);
-        setDummyData();
         populate();
     }
 
     private void populate(){
+        setDummyData();
         mTextData.setText(mSpanBuilder);
+        mSpanBuilder.clear();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_data, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_refresh:
+                populate();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setDummyData(){
@@ -43,7 +63,7 @@ public class DataActivity extends AppCompatActivity {
         section(R.string.cat_title_phone_number, data.nextPhoneNumber(), data.nextPhoneNumber(Data.PHONE_NUMBER_COUTRY_RSA));
         section(R.string.cat_title_word, data.nextWord());
         section(R.string.cat_title_sentence, data.nextSentence(3, 20));
-        section(R.string.cat_title_paragraph, data.nextParagraph(2));
+        section(R.string.cat_title_paragraph, data.nextParagraph());
     }
 
     private void section(int titleResId, String... content){
@@ -69,7 +89,6 @@ public class DataActivity extends AppCompatActivity {
     }
 
     private void line(String line){
-//        SpannableString span = new SpannableString(line);
         mSpanBuilder.append(line);
         newLine();
     }
