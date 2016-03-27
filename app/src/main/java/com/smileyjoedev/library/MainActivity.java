@@ -1,12 +1,21 @@
 package com.smileyjoedev.library;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.smileyjoedev.data.Data;
 
-public class MainActivity extends AppCompatActivity {
+import com.smileyjoedev.library.activity.base.BaseActivity;
+
+public class MainActivity extends BaseActivity {
+
+    public static Intent getIntent(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,4 +35,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("TestThings", data.nextEmail("Tom Johns"));
         Log.d("TestThings", data.nextWebsite());
     }
+
+    @Override
+    public int getNavMenuId() {
+        return R.id.navigation_home;
+    }
+
 }

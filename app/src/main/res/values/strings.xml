@@ -11,4 +11,10 @@
     <string name="cat_title_paragraph">Paragraph</string>
 
     <string name="action_title_refresh">Refresh</string>
+
+    <string name="navigation_title_home">Home</string>
+    <string name="navigation_title_data">Data</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 </resources>

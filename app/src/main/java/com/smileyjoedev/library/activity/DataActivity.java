@@ -1,5 +1,7 @@
 package com.smileyjoedev.library.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
@@ -15,19 +17,25 @@ import android.widget.TextView;
 
 import com.smileyjoedev.data.Data;
 import com.smileyjoedev.library.R;
+import com.smileyjoedev.library.activity.base.BaseActivity;
 
 /**
  * Created by cody on 2016/03/25.
  */
-public class DataActivity extends AppCompatActivity {
+public class DataActivity extends BaseActivity {
 
-    private SpannableStringBuilder mSpanBuilder;
+    private SpannableStringBuilder mSpanBuilder = new SpannableStringBuilder();
     private TextView mTextData;
+
+    public static Intent getIntent(Context context){
+        Intent intent = new Intent(context, DataActivity.class);
+        return intent;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
-        mSpanBuilder = new SpannableStringBuilder();
         mTextData = (TextView) findViewById(R.id.text_data);
         populate();
     }
@@ -89,8 +97,10 @@ public class DataActivity extends AppCompatActivity {
     }
 
     private void line(String line){
-        mSpanBuilder.append(line);
-        newLine();
+        if(line != null) {
+            mSpanBuilder.append(line);
+            newLine();
+        }
     }
 
     private void newLine(){
