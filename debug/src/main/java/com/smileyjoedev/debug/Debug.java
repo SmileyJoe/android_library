@@ -33,6 +33,7 @@ public class Debug {
     // - Button to save to sdCard as text file //
     // TODO: Remove monitor class and have it as part of this, so Debug debug =
     // new Debug(), debug.log(), debug.end() //
+    // TODO: Primitive type arrays, eg, int[]
 
     private static String LOG_NAME = "";
     private static final String LINE_BREAK = "\n";
