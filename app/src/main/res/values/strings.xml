@@ -9,6 +9,7 @@
     <string name="cat_title_word">Word</string>
     <string name="cat_title_sentence">Sentence</string>
     <string name="cat_title_paragraph">Paragraph</string>
+    <string name="cat_title_website">Website</string>
 
     <string name="action_title_refresh">Refresh</string>
 

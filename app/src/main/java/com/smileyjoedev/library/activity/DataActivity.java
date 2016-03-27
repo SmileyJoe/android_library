@@ -69,6 +69,7 @@ public class DataActivity extends BaseActivity {
         section(R.string.cat_title_name, data.nextName());
         section(R.string.cat_title_email, data.nextEmail());
         section(R.string.cat_title_phone_number, data.nextPhoneNumber(), data.nextPhoneNumber(Data.PHONE_NUMBER_COUTRY_RSA));
+        section(R.string.cat_title_website, data.nextWebsite());
         section(R.string.cat_title_word, data.nextWord());
         section(R.string.cat_title_sentence, data.nextSentence(3, 20));
         section(R.string.cat_title_paragraph, data.nextParagraph());

@@ -61,7 +61,7 @@ public class Data extends Random{
     }
 
     public String nextWebsite(){
-        return "www." + nextWord() + tlds[nextInt(tlds.length)];
+        return "www." + nextWord().toLowerCase() + tlds[nextInt(tlds.length)];
     }
 
     public String nextEmail(){
@@ -108,12 +108,10 @@ public class Data extends Random{
     }
 
     public String nextParagraph(int numberParagraphs){
-        String paragraph = null;
+        String paragraph = "";
 
         for(int i = 0; i < numberParagraphs; i++){
-            if(paragraph == null){
-                paragraph = "";
-            } else {
+            if(!paragraph.equals("")){
                 paragraph += System.lineSeparator() + System.lineSeparator();
             }
 
