@@ -20,6 +20,7 @@ import com.smileyjoedev.library.MainActivity;
 import com.smileyjoedev.library.R;
 import com.smileyjoedev.library.activity.DebugActivity;
 import com.smileyjoedev.library.activity.DataActivity;
+import com.smileyjoedev.library.activity.DbActivity;
 
 /**
  * Created by cody on 2016/03/27.
@@ -62,19 +63,31 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             } else {
                 item.setChecked(true);
             }
+
+            Intent intent = null;
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    startActivity(navMenuIntent(MainActivity.getIntent(getBaseContext())));
-                    return true;
+                    intent = MainActivity.getIntent(getBaseContext());
+                    break;
+                case R.id.navigation_db:
+                    intent = DbActivity.getIntent(getBaseContext());
+                    break;
                 case R.id.navigation_debug:
-                    startActivity(navMenuIntent(DebugActivity.getIntent(getBaseContext())));
-                    return true;
+                    intent = DebugActivity.getIntent(getBaseContext());
+                    break;
                 case R.id.navigation_data:
-                    startActivity(navMenuIntent(DataActivity.getIntent(getBaseContext())));
-                    return true;
+                    intent = DataActivity.getIntent(getBaseContext());
+                    break;
                 default:
-                    return false;
+                    break;
+            }
 
+            if (intent != null) {
+                startActivity(navMenuIntent(intent));
+                return true;
+            } else {
+                return false;
             }
         } else {
             return false;

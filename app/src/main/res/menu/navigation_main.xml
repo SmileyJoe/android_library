@@ -13,4 +13,8 @@
         android:id="@+id/navigation_debug"
         android:checked="false"
         android:title="@string/navigation_title_debug" />
+    <item
+        android:id="@+id/navigation_db"
+        android:checked="false"
+        android:title="@string/navigation_title_db" />
 </menu>
