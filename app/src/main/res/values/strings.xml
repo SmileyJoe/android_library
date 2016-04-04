@@ -2,7 +2,24 @@
     <string name="app_name">Library</string>
 
     <string name="navigation_title_home">Home</string>
+    <string name="navigation_title_db">Database</string>
+
+    <string name="activity_title_db">@string/navigation_title_db</string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <string name="hint_user_name">Name</string>
+    <string name="hint_user_surname">Surname</string>
+    <string name="hint_user_phone">Phone</string>
+    <string name="hint_user_note">Note</string>
+    <string name="hint_user_db_id">Db ID</string>
+
+    <string name="button_cancel">Cancel</string>
+    <string name="button_save">Save</string>
+    <string name="button_load">Load</string>
+
+    <string name="error_db_id_not_long">Db id must be a number.</string>
+    <string name="error_db_id_does_not_exist">Db id does not exist.</string>
+    <string name="success_user_db_saved">User saved to id %1$s</string>
 </resources>

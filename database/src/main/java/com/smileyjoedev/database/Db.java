@@ -3,6 +3,7 @@ package com.smileyjoedev.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class Db {
@@ -55,9 +56,9 @@ public class Db {
         return String.format(column, name, type);
     }
 
-    public static int getCount(Context context, String table, String where){
+    public static int getCount(SQLiteOpenHelper helper, String table, String where){
         int count = 0;
-        SQLiteDatabase db = new DbHelper(context).getWritableDatabase();
+        SQLiteDatabase db = helper.getWritableDatabase();
 
         String query = String.format("SELECT count(%s) FROM %s %s", Db.COL_ID, table, where);
 

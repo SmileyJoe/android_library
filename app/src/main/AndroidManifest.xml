@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.DbActivity" android:label="@string/activity_title_db">
+        </activity>
     </application>
 
 </manifest>

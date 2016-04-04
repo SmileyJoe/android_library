@@ -7,12 +7,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public abstract class DbBase<T extends DbObject> {
 
     protected Context mContext;
     protected SQLiteDatabase mDb;
-    protected DbHelper mDbHelper;
     protected Cursor mCursor;
     protected HashMap<String, Integer> mColumns;
 
@@ -28,10 +28,9 @@ public abstract class DbBase<T extends DbObject> {
 
     protected abstract T defaultObject();
 
-    public DbBase(Context context) {
+    public DbBase(Context context, SQLiteOpenHelper helper) {
         mContext = context;
-        mDbHelper = new DbHelper(context);
-        mDb = mDbHelper.getWritableDatabase();
+        mDb = helper.getWritableDatabase();
         mColumns = new HashMap<String, Integer>();
     }
 
@@ -40,7 +39,7 @@ public abstract class DbBase<T extends DbObject> {
     }
 
     public T getDetails(long id) {
-        return getByField("_id", Long.toString(id));
+        return getByField(Db.COL_ID, Long.toString(id));
     }
 
     public T getByField(String fieldName, String value) {
@@ -54,13 +53,13 @@ public abstract class DbBase<T extends DbObject> {
     }
 
     public boolean delete(long id) {
-        int rowCount = mDb.delete(getTableName(), "_id = ?", getWhereArgs(id));
+        int rowCount = mDb.delete(getTableName(), Db.COL_ID + " = ?", getWhereArgs(id));
         return isSucces(rowCount);
     }
 
     public boolean update(T obj) {
         ContentValues values = createContentValues(obj);
-        int rowCount = mDb.update(getTableName(), values, "_id = ?", getWhereArgs(obj.getId()));
+        int rowCount = mDb.update(getTableName(), values, Db.COL_ID + " = ?", getWhereArgs(obj.getId()));
         return isSucces(rowCount);
     }
 
@@ -99,7 +98,7 @@ public abstract class DbBase<T extends DbObject> {
     }
 
     protected T sortCursor() {
-        T obj = defaultObject();
+        T obj = null;
 
         this.setColoumns();
 
@@ -107,6 +106,7 @@ public abstract class DbBase<T extends DbObject> {
             this.mCursor.moveToFirst();
             if (this.mCursor.getCount() > 0) {
                 obj = parseData();
+                obj.setId(getColumnLong(Db.COL_ID));
             }
         }
 
@@ -126,7 +126,12 @@ public abstract class DbBase<T extends DbObject> {
             this.mCursor.moveToFirst();
             if (this.mCursor.getCount() > 0) {
                 do {
-                    obj.add(parseData());
+                    T item = parseData();
+
+                    if(item != null){
+                        obj.add(item);
+                    }
+
                 } while (this.mCursor.moveToNext());
             }
         }
